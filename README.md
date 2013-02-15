@@ -28,3 +28,10 @@ GOOGLE_URL="http://translate.google.com/translate_tts?tl=$LANGUAGE&q="
 `GOOGLE_URL` is the url used to generate the wave file.
 
 Usually you'll only change the desired language.
+
+## Dependencies
+
+* sox
+* wget
+* openssl
+
