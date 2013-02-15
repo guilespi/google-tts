@@ -1,5 +1,4 @@
-google-tts
-==========
+# google-tts
 
 Bash script to create wave files using google text to speech online service.
 
@@ -14,8 +13,7 @@ The script receives two parameters, the `directory` to be used and the `text` to
 guilespi$ ./text2mp3.sh 
 Usage: ./text2mp3.sh [directory] [text]
 ```
-
-* Configuration * 
+## Configuration
 
 There are three important parameters to configure the script
 
