@@ -40,9 +40,10 @@ for word in ${*:2}; do
         splitfile="$basedir/$checksum$slice.mp3"
         files=("${files[@]}" $splitfile)
         wget -U Mozilla -O $splitfile "$GOOGLE_URL$text"
-        text=""
+        text=$word
+    else
+      text+=" "$word
     fi
-    text+=$word" " 
 done;
 
 if [ ${#text} -gt 0 ]; then
@@ -54,6 +55,8 @@ fi
 
 IFS=" "
 sox --combine sequence ${files[*]} $basedir/$filename
+#TODO: output format consideration
+#lame -v -m m -B 48 -s 44.1 input.wav output.mp3
 exec 1>&6 6>&-      # Restore stdout and close file descriptor #6.
 echo $filename
 for f in $files; do
