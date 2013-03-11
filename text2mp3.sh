@@ -15,7 +15,7 @@ basedir=$1
 exec 6>&1           # Link file descriptor #6 with stdout.
 exec &> $basedir/$LOGFILE    # stdout replaced with file "logfile.txt".
 
-checksum=`echo ${*:2} | openssl md5`
+checksum=`echo ${*:2} | openssl md5 | sed 's/^.* //'`
 
 echo "Checksum [$checksum] for text [${*:2}]"
 
