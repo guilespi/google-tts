@@ -29,6 +29,17 @@ GOOGLE_URL="http://translate.google.com/translate_tts?tl=$LANGUAGE&q="
 
 Usually you'll only change the desired language.
 
+##Asterisk integration
+
+Copy both `.sh` files to `/usr/share/asterisk/agi-bin` and modify the dialplan this way
+
+```
+[context]
+
+exten => 1000,1, AGI(render-wave.sh, This is the text to speak!)
+
+```
+                               
 ## Dependencies
 
 * sox
