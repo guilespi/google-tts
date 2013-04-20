@@ -4,6 +4,7 @@ set -e
 LONGEST_TEXT=100
 LANGUAGE="es"
 GOOGLE_URL="http://translate.google.com/translate_tts?tl=$LANGUAGE&q="
+USERAGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31"
 LOGFILE=log.txt
 
 if [ "$1" == "" -o "$2" == "" ]; then
@@ -39,7 +40,7 @@ for word in ${*:2}; do
         echo "Splitting text [$text] for slice $slice"
         splitfile="$basedir/$checksum$slice.mp3"
         files=("${files[@]}" $splitfile)
-        wget -U Mozilla -O $splitfile "$GOOGLE_URL$text"
+        wget -U "$USERAGENT" -O $splitfile "$GOOGLE_URL$text"
         text=$word
     else
       text+=" "$word
@@ -49,7 +50,7 @@ done;
 if [ ${#text} -gt 0 ]; then
   slice+=1
   splitfile="$basedir/$checksum$slice.mp3"
-  wget  -U Mozilla -O $splitfile "$GOOGLE_URL$text"
+  wget  -U "$USERAGENT" -O $splitfile "$GOOGLE_URL$text"
   files=("${files[@]}" $splitfile)
 fi
 
